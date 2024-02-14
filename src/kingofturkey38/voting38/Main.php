@@ -69,9 +69,9 @@ class Main extends PluginBase implements Listener{
 	 */
 	public function onVote(PlayerVoteEvent $event) : void{
 		$player = $event->getPlayer();
-
+$rewardsintext = $this->getConfig()->get("RewardsText");
 		if($event->getVoteAnnouncement() !== null){
-			$this->getServer()->broadcastMessage($event->getVoteAnnouncement());
+			$this->getServer()->broadcastMessage($event->getVoteAnnouncement(), str_replace("{rewards}", $rewardsintext));
 		}
 
 		if($event->shouldGiveRewards()){
